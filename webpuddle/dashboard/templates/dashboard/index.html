@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Newest Items Section -->
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">My Items</h2>
+    
+    <div class="grid grid-cols-3 gap-3">
+        {% for item in items %}
+        <div>
+            <!-- Generate a URL for the 'details' view in the 'item' app-->
+             <!-- Passing the item's ID as a parameter, and uses it as the href attribute for an HTML anchor tag.-->
+            <a href="{% url 'item:details' item.id %}">
+                <div>
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                    {% else %}
+                    <p>No image available</p>
+                    {% endif %}
+                </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{ item.name }}</h2>
+                    <p>{{ item.description }}</p>
+                    <p text-gray-100>Price: ${{ item.price }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
