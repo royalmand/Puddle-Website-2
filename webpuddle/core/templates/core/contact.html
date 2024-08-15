@@ -3,5 +3,10 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-<h1>The Contact Page</h1>
+<h1 class="mt-6 font-mono text-[10vw] text-center font-semibold tracking-tighter">Contact us.</h1>
+<form action="mailto:royalmandd@gmail.com" method="get" class="flex flex-col gap-y-6 mx-auto max-w-xl">
+    <input name="subject" placeholder="subject" class="border-b-2 border-black p-2 font-semibold text-2xl"/>
+    <input name="body" placeholder="body" rows="5" class="border-b-2 border-black p-2 font-semibold text-2xl"/>
+    <input type="submit" class="bg-black py-2 cursor-pointer text-white"/>
+</form> <br>
 {% endblock %}

@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/dog.png' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
     <!-- Navbar-->
-    <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-200">
+    <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-200 bg-white fixed top-0 w-full z-10">
 
         <!-- Navbar's Left Side-->
         <!-- Brand Name-->
-        <a href="/" class="text-xl font-semibold">Puddle</a>
+        <div class="flex items-center">
+            <a href="/" class="flex items-center text-2xl font-semibold tracking-tight">
+                <img src="{% static 'images/dog.png' %}" alt="Logo" class="h-8 w-8 mr-2">
+                <span>Puddle</span>
+            </a>
+        </div>
+        
 
         <!-- Navbar's Right Side -->
         <div class="space-x-6">
@@ -25,7 +34,7 @@
 
             <!-- For logged in users -->
             {% if request.user.is_authenticated %}
-            <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+            <a href="{% url 'conversation:inbox' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
             <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
 
             {% else %}
@@ -47,7 +56,7 @@
     <div class="w-2/3 pr-10">
         <h3 class="mb-5 font-semibold text-gray-400">About</h3>
 
-        <p class="text-lg text-gray-500">Generated with Puddle which is a simple Django web application.</p>
+        <p class="text-lg text-gray-500">Welcome to our company! We are a team of passionate professionals dedicated to delivering high-quality services and solutions to our clients. We believe in building lasting relationships with our clients by understanding their needs and exceeding their expectations.</p>
     </div>
 
     <div class="w-1/3">

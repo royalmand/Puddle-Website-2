@@ -1,7 +1,70 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}About Page{% endblock %}
 
 {% block content %}
-<h1>About</h1>
+ <!-- About Us Heading -->
+ <section class="py-16">
+    <h1 class="font-mono text-[10vw] text-center font-semibold tracking-tighter">About us.</h1>
+</section>
+
+<!-- About Us Content -->
+<section class="flex flex-col md:flex-row gap-10 mx-auto max-w-6xl p-6">
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex justify-center">
+        <img src="{% static 'images/community.jpg' %}" alt="About Us" class="rounded-lg shadow-lg">
+    </div>
+
+    <!-- Text Content Section -->
+    <div class="md:w-1/2">
+        <h2 class="font-mono text-4xl font-semibold mb-4 tracking-tight">Who We Are</h2>
+        <p class="mb-4 text-xl font-medium leading-relaxed">
+            Welcome to our company! We are a team of passionate professionals dedicated to delivering high-quality services and solutions to our clients. Our journey began with a mission to innovate and inspire, and we have been making strides in our industry ever since.
+        </p>
+        <p class="mb-4 text-xl font-medium leading-relaxed">
+            Our values are rooted in integrity, excellence, and a commitment to customer satisfaction. We believe in building lasting relationships with our clients by understanding their needs and exceeding their expectations.
+        </p>
+        <a href="#our-team" class="inline-block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-300">Meet the Team</a>
+    </div>
+</section>
+
+<!-- Our Vision Section -->
+<section class="py-16 bg-white">
+    <div class="mx-auto max-w-6xl p-6">
+        <h2 class="font-mono text-4xl text-center font-semibold mb-8 tracking-tight">Our Vision</h2>
+        <p class="text-xl font-medium leading-relaxed text-center">
+            We envision a future where our services redefine industry standards, creating value and opportunities for our clients and communities. Our vision drives us to innovate continually, embrace new challenges, and strive for excellence in everything we do.
+        </p>
+    </div>
+</section>
+
+<!-- Our Team Section -->
+<section id="our-team" class="py-16">
+    <div class="mx-auto max-w-6xl p-6">
+        <h2 class="font-mono text-4xl text-center font-semibold mb-8 tracking-tight">Our Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Team Member 1 -->
+            <div class="flex flex-col items-center">
+                <img src="{% static 'images/istockphoto-1288538088-612x612.jpg' %}" alt="Team Member 1" class="rounded-full shadow-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-2">Michael LeBeau</h3>
+                <p class="text-lg font-medium text-gray-700">CEO & Founder</p>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="flex flex-col items-center">
+                <img src="{% static 'images/smith.jpg' %}" alt="Team Member 2" class="rounded-full shadow-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-2">Albert Smith</h3>
+                <p class="text-lg font-medium text-gray-700">Chief Technology Officer</p>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="flex flex-col items-center">
+                <img src="{% static 'images/smwoman.jpg' %}" alt="Team Member 3" class="rounded-full shadow-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-2">Emily Johnson</h3>
+                <p class="text-lg font-medium text-gray-700">Head of Marketing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}

@@ -1,21 +1,22 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}Puddle{% endblock %}
 
 {% block content %}
 
 <!-- Newest Items Section -->
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Newest Items</h2>
+    <h2 class="mb-8 text-2xl text-center font-medium">Newest Items</h2>
     <div class="grid grid-cols-3 gap-3">
         {% for item in items %}
         <div class="w-full h-full flex justify-center items-center aspect-w-1 aspect-h-1">
             <!-- Generate a URL for the 'details' view in the 'item' app-->
              <!-- Passing the item's ID as a parameter, and uses it as the href attribute for an HTML anchor tag.-->
             <a href="{% url 'item:details' item.id %}">
-                <div>
+                <div class="aspect-w-1 aspect-h-1">
                     {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="object-cover w-full h-full rounded-t-xl">
                     {% else %}
                     <p>No image available</p>
                     {% endif %}
@@ -23,7 +24,7 @@
                 <div class="p-6 bg-white rounded-b-xl">
                     <h2 class="text-2xl">{{ item.name }}</h2>
                     <p>{{ item.description }}</p>
-                    <p text-gray-100>Price: ${{ item.price }}</p>
+                    <p text-gray-600>Price: ${{ item.price }}</p>
                 </div>
             </a>
         </div>
@@ -33,11 +34,11 @@
 
 <!-- Categories Section -->
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Categories</h2>
+    <h2 class="mb-12 text-2xl text-center font-medium">Categories</h2>
     <div class="grid grid-cols-3 gap-3">
         {% for category in categories %}
         <div>
-            <a href="#">
+            <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}">
                 <div class="p-6 bg-white rounded-b-xl">
                     <h2 class="text-2xl">{{ category.name }}</h2>
                     <p text-gray-500>{{ category.items.count }} items</p>

@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Chat Box{% endblock %}
+
+{% block content %}
+<h1 class="mt-16 text-3xl">Inbox</h1>
+
+<div class="space-y-2">
+    {% for conversation in conversations %}
+    <a href="{% url 'conversation:details' conversation.id %}">
+        <div class="p-6 flex bg-gray-100 rounded-xl">
+            <div class="pr-6">
+                <img src="{{ conversation.item.image.url }}" class="w-20 rounded-xl">
+            </div>
+
+            <div>
+                {% for member in conversation.members.all %}
+                    {% if member != request.user %}
+                    <p class="mb-4"><strong>{{ member.username }}</strong> | {{ conversation.modified.at }}</p>
+                    <p>{{ conversation.item.name }}</p>
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
